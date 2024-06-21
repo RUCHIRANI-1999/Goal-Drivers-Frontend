@@ -10,15 +10,20 @@ import SellerBid from "./components/Seller/SellerBid";
 import CustomerBid from "./components/Customer/CustomerBid";
 import ConfirmOrder from "./components/Customer/ConfirmOrder";
 import Feedback from "./Feedback/Feedback";
+import About from "./About/About";
+import Product from "./Product/Product";
+
 
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="" element={<Home/>}/>
+                <Route path="/about" element={<About/>}/>
                 <Route path="/form" element={<Form/>}/>
                 <Route path="/bid" element={<BidForm/>}/>
-                <Route path="/direct" element={<DirectForm/>}/>
+                <Route path="/direct" element={<DirectForm/>}/>                
+                <Route path="/product" element={<Product/>}/>
                 <Route path="/seller" element={<Seller/>}/>
                 <Route path="/seller-bid" element={<SellerBid/>}/>
                 <Route path="/customer-bid" element={<CustomerBid/>}/>
