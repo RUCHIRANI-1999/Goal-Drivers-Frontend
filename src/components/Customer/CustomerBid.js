@@ -11,7 +11,7 @@ export default function CustomerBid() {
     const [seller , setSeller] = useState({})
     const [productsState , setProductState] = useState(true)
     const buyer = {
-        id : 3
+        id : 1
     }
     useEffect(()=>{
         axios.get("http://localhost:3002/api/buyer/get_products",{
