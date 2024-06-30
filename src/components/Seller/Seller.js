@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './seller.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Foot from '../Footer/Foot'
 
 export default function Seller() {
   const [products , setProducts] = useState([])
@@ -47,6 +48,7 @@ export default function Seller() {
                 </tr>
             </table>
         </div>
+        <Foot/>
     </div>
   )
 }

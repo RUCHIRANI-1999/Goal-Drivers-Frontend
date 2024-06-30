@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import NavHome from '../NavBar/NavHome';
-import Footer from '../Footer/Footer';
+import Foot from '../Footer/Foot';
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         <Link to='/customer-bid'><button>Customer</button></Link>
         <Link to='/seller'> <button>Seller</button></Link>
         </div> 
-      <div><Footer/></div>
+      <div><Foot/></div>
     </div>
   );
 }

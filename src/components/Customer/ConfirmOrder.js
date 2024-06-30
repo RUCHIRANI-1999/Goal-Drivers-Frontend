@@ -2,6 +2,7 @@ import React from 'react'
 import './Customer.css'
 import NavHome from '../NavBar/NavHome'
 import Footer from '../Footer/Footer'
+import Foot from '../Footer/Foot'
 
 export default function ConfirmOrder() {
   return (<>
@@ -85,7 +86,7 @@ export default function ConfirmOrder() {
                    
        
            
-        <Footer/>
+        <Foot/>
     </div>
     </>
   )

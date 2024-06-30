@@ -3,6 +3,7 @@ import './seller.css'
 import NavHome from '../NavBar/NavHome'
 import Footer from '../Footer/Footer'
 import axios from 'axios'
+import Foot from '../Footer/Foot'
 
 export default function SellerBid() {
     const [bidProducts , setBidProducts] = useState([])
@@ -10,7 +11,7 @@ export default function SellerBid() {
     const [bidView , setBidView] = useState([])
     const [productsState , setProductState] = useState(true)
     const seller = {
-        id : 2
+        id : 1
       }
     useEffect(()=>{
         axios.get("http://localhost:3002/api/seller/get_bid_products/"+seller.id,{
@@ -150,7 +151,7 @@ export default function SellerBid() {
         </div>
         ))}
         </>
-        <Footer/>
+        <Foot/>
       
     </div>
 

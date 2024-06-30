@@ -30,31 +30,42 @@ export default function BidForm({params , pname}) {
     console.log(params)
   }
   return (
-
-    <div>
-        
-        <form method='get'>
-        <table border="0" >
-          <caption>Bid Details</caption>
-          <tr>
-          <th>Base Value (LKR)</th>
-            <td>
-              <input type="number" className='text' onChange={(e)=>{setBaseValue(e.target.value)}}/>
-            </td>
-          </tr>
-          <tr>
-            <th>Bid Time Duration</th>
-            <td><input type="number" className='text' required onChange={(e)=>{setBidTime(e.target.value)}}/></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <input type="reset" name="Cancel" value="Cancel" className='cancel'/>
-              <input type="submit" name="Submit" value="Submit" className='submit' onClick={addProduct_}/>
-            </td>
-          </tr>
+    <div className="form-container">
+      <form className="form" onSubmit={addProduct_}>
+        <table className="table">
+          <caption className="caption">Bid Details</caption>
+          <tbody>
+            <tr className="table-row">
+              <th>Base Value (LKR)</th>
+              <td className="table-cell">
+                <input 
+                  type="number" 
+                  className="input" 
+                  onChange={(e) => setBaseValue(e.target.value)} 
+                  required 
+                />
+              </td>
+            </tr>
+            <tr className="table-row">
+              <th>Bid Time Duration</th>
+              <td className="table-cell">
+                <input 
+                  type="number" 
+                  className="input" 
+                  onChange={(e) => setBidTime(e.target.value)} 
+                  required 
+                />
+              </td>
+            </tr>
+            <tr className="table-row">
+              <td className="table-cell" colSpan="2" align="right">
+                <input type="reset" value="Cancel" className="button" />
+                <input type="submit" value="Submit" className="button" />
+              </td>
+            </tr>
+          </tbody>
         </table>
       </form>
     </div>
-  )
+  );
 }

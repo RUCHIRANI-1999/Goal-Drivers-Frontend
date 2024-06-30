@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './Customer.css'
 import lap from './Laptop.png'
 import NavHome from '../NavBar/NavHome'
-import Footer from '../Footer/Footer'
 import axios from 'axios'
+import Foot from '../Footer/Foot'
 
 export default function CustomerBid() {
     const [bid_products , setBidProduct] = useState([])
@@ -151,7 +151,7 @@ export default function CustomerBid() {
                     </>
                 ))}
         </div>
-        <Footer/>
+        <Foot/>
     </div>
     </>
   )
