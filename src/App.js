@@ -10,6 +10,7 @@ import SellerBid from "./components/Seller/SellerBid";
 import CustomerBid from "./components/Customer/CustomerBid";
 import ConfirmOrder from "./components/Customer/ConfirmOrder";
 import Feedback from "./Feedback/Feedback";
+import NotificationSystem from "./components/Notification/NotificationSystem";
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                 <Route path="/customer-bid" element={<CustomerBid/>}/>
                 <Route path="/confirm-order" element={<ConfirmOrder/>}/>
                 <Route path="/feedback" element={<Feedback/>}/>
+                <Route path="/notification" element={<NotificationSystem/>}/>
             </Routes>
         </BrowserRouter>
     );

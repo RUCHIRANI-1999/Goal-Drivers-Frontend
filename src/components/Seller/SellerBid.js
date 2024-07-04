@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './seller.css'
 import NavHome from '../NavBar/NavHome'
-import Footer from '../Footer/Footer'
 import axios from 'axios'
 import Foot from '../Footer/Foot'
 
