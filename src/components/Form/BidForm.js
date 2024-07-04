@@ -2,18 +2,16 @@ import axios from "axios";
 import { useState } from "react"
 import React from 'react'
 
-export default function BidForm({params , pname}) {
+export default function BidForm({params , pname ,seller_id}) {
   const[baseValue, setBaseValue] = useState(0);
   const[bidTime, setBidTime] = useState(0);
-  const seller = {
-    id : 2
-  }
+  
   function addProduct_(){
       axios.post("http://localhost:3002/api/seller/add_bid_product",{
           name:pname,
           description:params,
           amount:1,
-          seller_id:seller.id,
+          seller_id:seller_id,
           base_price:baseValue,
           duration:bidTime
       }).then((res)=>{
