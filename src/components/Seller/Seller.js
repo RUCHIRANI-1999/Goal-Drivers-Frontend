@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './seller.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Foot from '../Footer/Foot'
-import React, { useEffect, useState } from 'react';
-import './seller.css';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 export default function Seller() {
   const [products, setProducts] = useState([]);

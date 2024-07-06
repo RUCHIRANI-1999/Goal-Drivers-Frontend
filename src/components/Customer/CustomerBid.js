@@ -3,7 +3,6 @@ import './Customer.css';
 import lap from './Laptop.png';
 import NavHome from '../NavBar/NavHome';
 import axios from 'axios';
-import Foot from '../Footer/Foot';
 
 export default function CustomerBid() {
     const [bidProducts, setBidProducts] = useState([]);
@@ -145,7 +144,6 @@ export default function CustomerBid() {
               </div>
             ))}
           </div>
-          <Footer />
         </div>
       </>
     );
