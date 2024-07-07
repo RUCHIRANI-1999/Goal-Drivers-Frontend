@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./components/Home/Home"
-import Form from "./components/Form/Form"
-import BidForm from "./components/Form/BidForm";
-import DirectForm from "./components/Form/DirectForm";
+import Form from "./components/Seller/Form"
+import BidForm from "./components/Seller/BidForm";
+import DirectForm from "./components/Seller/DirectForm";
 import Seller from "./components/Seller/Seller";
 import SellerBid from "./components/Seller/SellerBid";
 import CustomerBid from "./components/Customer/CustomerBid";

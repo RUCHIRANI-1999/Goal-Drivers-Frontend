@@ -28,17 +28,15 @@ export default function BidForm({params , pname ,seller_id}) {
     console.log(params)
   }
   return (
-    <div className="form-container">
-      <form className="form" onSubmit={addProduct_}>
+    <div>
+      <form  onSubmit={addProduct_} method='get'>
         <table className="table">
-          <caption className="caption">Bid Details</caption>
           <tbody>
             <tr className="table-row">
               <th>Base Value (LKR)</th>
-              <td className="table-cell">
+              <td>
                 <input 
                   type="number" 
-                  className="input" 
                   onChange={(e) => setBaseValue(e.target.value)} 
                   required 
                 />
@@ -48,8 +46,7 @@ export default function BidForm({params , pname ,seller_id}) {
               <th>Bid Time Duration</th>
               <td className="table-cell">
                 <input 
-                  type="number" 
-                  className="input" 
+                  type="number"  
                   onChange={(e) => setBidTime(e.target.value)} 
                   required 
                 />

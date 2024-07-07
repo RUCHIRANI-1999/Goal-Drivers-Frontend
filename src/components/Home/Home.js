@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col, Card, CardBody, CardTitle, Button } from 'reactstrap';
 import NavHome from '../NavBar/NavHome';
 import Foot from '../Footer/Foot';
 
@@ -7,28 +8,26 @@ export default function Home() {
   return (
     <div>
       <NavHome />
-      <Container style={{ minHeight: '70vh' }} className="d-flex align-items-center justify-content-center">
-        <Row>
-          <Col md="6" className="mb-4">
-            <Card className="text-center">
-              <Card.Body>
-                <FaUser size={50} className="mb-3" />
-                <Card.Title>Customer</Card.Title>
-                <Link to='/customer-bid'>
-                  <Button color="primary">Go to Customer</Button>
+      <Container style={{ minHeight: '50vh', paddingTop: '20px' }}>
+        <Row className="mb-4">
+          <Col lg="6">
+            <Card>
+              <CardBody>
+                <CardTitle tag="h5">Do you want to buy?</CardTitle>
+                <Link to="/customer-bid">
+                  <Button color="primary">Customer</Button>
                 </Link>
-              </Card.Body>
+              </CardBody>
             </Card>
           </Col>
-          <Col md="6" className="mb-4">
-            <Card className="text-center">
-              <Card.Body>
-                <FaStore size={50} className="mb-3" />
-                <Card.Title>Seller</Card.Title>
-                <Link to='/seller'>
-                  <Button color="secondary">Go to Seller</Button>
+          <Col lg="6">
+            <Card>
+              <CardBody>
+                <CardTitle tag="h5">Do you want to sell?</CardTitle>
+                <Link to="/seller">
+                  <Button color="primary">Seller</Button>
                 </Link>
-              </Card.Body>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -37,6 +36,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

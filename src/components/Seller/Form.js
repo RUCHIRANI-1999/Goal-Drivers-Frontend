@@ -41,31 +41,21 @@ export default function FormBid() {
     alert("hello")
   }
 
-  return (<>
-  <NavHome/>
-    <div className='bg'>
+  return (
+  <>
+    <div>
         <form method='get' id='productform'>
-        <table border="0" className='frm'>
-          <tr>
+        <table border="0" className="table">
+          <tr className="table-row">
             <th>Product Name</th>
-            <td> <input type="text" className='text' id="name" required onChange={(e)=>{setProductName(e.target.value)}}/></td>
+            <td className="table-cell"> <input type="text" id="name" required onChange={(e)=>{setProductName(e.target.value)}}/></td>
           </tr>
-          <tr>
-            <th>Product Category </th>
-            <td>
-              <select name="category" id="category" className='text' required onChange={(e)=>{setProductCategory(e.value)}}>
-                <option value="RAM">RAM</option>
-                <option value="ROM">ROM</option>
-                <option value="NIC">Laptop</option>
-                <option value="Printers">Printers</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
+
+          <tr className="table-row">
             <th>Description </th>
-            <td><textarea className='text' id="description" required onChange={(e)=>{setProductDescription(e.target.value)}}></textarea></td>
+            <td className="table-cell"><textarea  id="description" required onChange={(e)=>{setProductDescription(e.target.value)}}></textarea></td>
           </tr>
-          <tr>
+          <tr className="table-row">
             <th>Insert Photos of product 
             </th>
             <td>
@@ -83,24 +73,26 @@ export default function FormBid() {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr className="table-row">
             <th>
               Do you want to bid your product?
             </th>
             <td>
+            <input
+                  type='button'
+                  name='No'
+                  value='No'
+                  color="primary"
+                  className='button'
+                  onClick={handleNoClick}
+                />
               <input
                   type='button'
                   name='Yes'
                   value='Yes'
-                  className='yes'
+                  color="primary"
+                  className='button'
                   onClick={handleYesClick}
-                />
-                <input
-                  type='button'
-                  name='No'
-                  value='No'
-                  className='no'
-                  onClick={handleNoClick}
                 />
             </td>
           </tr>

@@ -28,23 +28,22 @@ export default function DirectForm({params , pname}) {
   return (
     <div>
         <form method='get'>
-        <table border="0" className='frm'>
-          <caption>Direct Selling Details</caption>
-          <tr>
+        <table border="0" className="table">
+          <tr className="table-row">
           <th>Unit Price (LKR)</th>
-            <td>
-              <input type="number" className='text' onChange={(e)=>{setUnitPrice(e.target.value)}}/>
+            <td className="table-cell">
+              <input type="number"  onChange={(e)=>{setUnitPrice(e.target.value)}}/>
             </td>
           </tr>
-          <tr>
+          <tr className="table-row">
             <th>Quantity</th>
-            <td><input type="number" className='text' required onChange={(e)=>{setQuantity(e.target.value)}}/></td>
+            <td className="table-cell"><input type="number" required onChange={(e)=>{setQuantity(e.target.value)}}/></td>
           </tr>
-          <tr>
+          <tr className="table-row">
             <td></td>
-            <td>
-              <input type="reset" name="Cancel" value="Cancel" className='cancel'/>
-              <input type="submit" name="Submit" value="Submit" className='submit' onClick={addProduct_}/>
+            <td className="table-cell" colSpan="2" align="right"> 
+              <input type="reset" name="Cancel" value="Cancel" className='button'/>
+              <input type="submit" name="Submit" value="Submit" className='button' onClick={addProduct_}/>
             </td>
           </tr>
         </table>

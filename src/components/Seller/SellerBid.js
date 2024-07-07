@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './seller.css';
 import NavHome from '../NavBar/NavHome';
 import Footer from '../Footer/Footer';
-import axios from 'axios';
+import axios from 'axios'; // Import the custom hook
+import { useNotification } from '../Notification/useNotification';
 
 export default function SellerBid() {
   const [bidProducts, setBidProducts] = useState([]);
@@ -10,6 +11,8 @@ export default function SellerBid() {
   const [bidView, setBidView] = useState([]);
   const [productsState, setProductState] = useState(true);
   const [seller, setSeller] = useState({ id: null });
+
+  const { selectCustomer } = useNotification; // Use the custom hook
 
   useEffect(() => {
     // Fetch seller details
@@ -52,6 +55,10 @@ export default function SellerBid() {
       setProductState(true);
     }, 1000);
   }
+
+  const handleSendNotification = (customerId, auctionId) => {
+    selectCustomer(customerId, auctionId);
+  };
 
   return (
     <>
@@ -101,7 +108,15 @@ export default function SellerBid() {
                               <td>{bid.user.firstname}</td>
                               <td>{bid.user.email}</td>
                               <td>{bid.bid.bid}</td>
-                              <td><input type="button" name="send" value="Send" className='yes' /></td>
+                              <td>
+                                <input
+                                  type="button"
+                                  name="send"
+                                  value="Send"
+                                  className='yes'
+                                  onClick={() => handleSendNotification(bid.user.id, product.product.product_id)}
+                                />
+                              </td>
                             </tr>
                           ))}
                         </tbody>
