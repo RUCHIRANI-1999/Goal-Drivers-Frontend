@@ -22,6 +22,7 @@ const App = () => {
                 <Route path="/direct" element={<DirectForm/>}/>
                 <Route path="/seller" element={<Seller/>}/>
                 <Route path="/seller-bid" element={<SellerBid/>}/>
+                <Route path="/seller-bid/:productId" component={SellerBid} />
                 <Route path="/customer-bid" element={<CustomerBid/>}/>
                 <Route path="/confirm-order" element={<ConfirmOrder/>}/>
                 <Route path="/feedback" element={<Feedback/>}/>

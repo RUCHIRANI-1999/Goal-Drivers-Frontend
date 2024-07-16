@@ -1,20 +1,17 @@
 import axios from 'axios';
 import React, {useState} from 'react'
 
-export default function DirectForm({params , pname}) {
+export default function DirectForm({params , pname ,seller_id}) {
   const[unitPrice, setUnitPrice] = useState(0);
   const[quantity, setQuantity] = useState(0);
 
-  const seller = {
-    id : 2
-  }
 
   function addProduct_(){
     axios.post("http://localhost:3002/api/seller/add_selling_product",{
         name:pname,
         description:params,
         amount:quantity,
-        seller_id:seller.id,
+        seller_id:seller_id,
         price:unitPrice
     }).then((res)=>{
       console.log(res.data)
@@ -27,7 +24,7 @@ export default function DirectForm({params , pname}) {
 
   return (
     <div>
-        <form method='get'>
+        <form method='get' onSubmit={addProduct_}>
         <table border="0" className="table">
           <tr className="table-row">
           <th>Unit Price (LKR)</th>
@@ -43,7 +40,7 @@ export default function DirectForm({params , pname}) {
             <td></td>
             <td className="table-cell" colSpan="2" align="right"> 
               <input type="reset" name="Cancel" value="Cancel" className='button'/>
-              <input type="submit" name="Submit" value="Submit" className='button' onClick={addProduct_}/>
+              <input type="submit" name="Submit" value="Submit" className='button'/>
             </td>
           </tr>
         </table>

@@ -1,60 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Button, Card, CardBody, CardTitle, CardText, Row, Col } from 'reactstrap';
 import './seller.css';
 import NavHome from '../NavBar/NavHome';
 import Footer from '../Footer/Footer';
-import axios from 'axios'; // Import the custom hook
+import axios from 'axios';
 import { useNotification } from '../Notification/useNotification';
 
 export default function SellerBid() {
-  const [bidProducts, setBidProducts] = useState([]);
   const [bids, setBids] = useState([]);
-  const [bidView, setBidView] = useState([]);
-  const [productsState, setProductState] = useState(true);
-  const [seller, setSeller] = useState({ id: null });
-
-  const { selectCustomer } = useNotification; // Use the custom hook
+  const { selectCustomer } = useNotification();
+  const { productId } = useParams();
 
   useEffect(() => {
-    // Fetch seller details
-    axios.get("http://localhost:3002/api/seller/details")
-      .then((res) => {
-        setSeller(res.data);
-      }).catch((err) => {
-        alert(err);
-      });
-
-    // Fetch bid products
-    axios.get(`http://localhost:3002/api/seller/get_bid_products/${seller.id}`)
-      .then((res) => {
-        const updatedProducts = res.data.map(product => ({
-          ...product,
-          view: false
-        }));
-        setBidProducts(updatedProducts);
-      }).catch((err) => {
-        alert(err);
-      });
-  }, [seller.id]);
-
-  async function onClick(index, productId) {
-    setProductState(false);
-    const updatedProducts = bidProducts.map((product, i) => ({
-      ...product,
-      view: i === index
-    }));
-    setBidProducts(updatedProducts);
-
-    await axios.get(`http://localhost:3002/api/seller/get_bids/${productId}`)
+    axios.get(`http://localhost:3002/api/seller/get_bids/${productId}`)
       .then((res) => {
         setBids(res.data);
       }).catch((err) => {
         alert(err);
       });
-
-    setTimeout(() => {
-      setProductState(true);
-    }, 1000);
-  }
+  }, [productId]);
 
   const handleSendNotification = (customerId, auctionId) => {
     selectCustomer(customerId, auctionId);
@@ -63,101 +28,24 @@ export default function SellerBid() {
   return (
     <>
       <NavHome />
-      <div className='bg'>
-        {bidProducts.length !== 0 && productsState && bidProducts.map((product, index) => (
-          <div key={index}>
-            <table className='frm'>
-              <tbody>
-                <tr>
-                  <td>
-                    <h3>Product Details</h3>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td><p className='text'>Product name</p></td>
-                          <td><p className='text'>{product.product.name}</p></td>
-                        </tr>
-                        <tr>
-                          <td><p className='text'>Product code</p></td>
-                          <td><p className='text'>00{product.product.product_id}</p></td>
-                        </tr>
-                        <tr>
-                          <td><p className='text'>Base Value</p></td>
-                          <td><p className='text'>: RS {product.base_price}</p></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  {product.view ? (
-                    <td rowSpan={5}>
-                      <h3>Bid Details</h3>
-                      <table border={1}>
-                        <thead>
-                          <tr>
-                            <th>Date</th>
-                            <th>Customer</th>
-                            <th>E-mail</th>
-                            <th>Bid Value</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {bids.length !== 0 && bids.map((bid, bidIndex) => (
-                            <tr key={bidIndex}>
-                              <td>{new Date(bid.bid.date).toLocaleDateString()}</td>
-                              <td>{bid.user.firstname}</td>
-                              <td>{bid.user.email}</td>
-                              <td>{bid.bid.bid}</td>
-                              <td>
-                                <input
-                                  type="button"
-                                  name="send"
-                                  value="Send"
-                                  className='yes'
-                                  onClick={() => handleSendNotification(bid.user.id, product.product.product_id)}
-                                />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </td>
-                  ) : (
-                    <td><button onClick={() => onClick(index, product.product.product_id)}>Show Bids</button></td>
-                  )}
-                </tr>
-                <tr>
-                  <td>
-                    <h3>Count Down</h3>
-                    <h4>Clock</h4>
-                    <p className='text'>DD HH MM SS</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h3>Bid Count</h3>
-                    <p className='text'>count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h3>Edit Product</h3>
-                    <input type="button" name="update" value="Update Bid Value" className='yes' />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h3>End your product bid</h3>
-                    <input type="button" name="end" value="End & Sell" className='yes' />
-                    <input type="button" name="cancel" value="Cancel" className='yes' />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        ))}
-        <Footer />
+      <div>
+        <Row>
+          {bids.length !== 0 && bids.map((bid, index) => (
+            <Col md="6" key={index}>
+              <Card className='mb-4'>
+                <CardBody>
+                  <CardTitle tag="h5">Bid {index + 1}</CardTitle>
+                  <CardText>Customer ID: {bid.customer_id}</CardText>
+                  <CardText>Bid Amount: {bid.bid_amount}</CardText>
+                  <Button color="primary" onClick={() => handleSendNotification(bid.customer_id, bid.auction_id)}>Send Notification</Button>
+                </CardBody>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        {bids.length === 0 && <p>No bids available for this product.</p>}
       </div>
+      <Footer />
     </>
   );
 }

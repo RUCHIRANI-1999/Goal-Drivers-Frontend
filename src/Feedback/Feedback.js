@@ -13,11 +13,11 @@ export default function Feedback() {
   const[feedback , setFeedback] = useState("")
 
   const product = {
-    id : 8
+    id : 1
   }
 
   const user = {
-    id : 3
+    id : 1
   }
 
   function addFeedback(){
