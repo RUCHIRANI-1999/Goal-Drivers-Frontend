@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './OrderConfirm.css';
-import productImg from './Pictures/RAM.jpg'
+//import productImg from './Pictures/RAM.jpg'
 import NavHome from '../components/NavBar/NavHome';
 import Footer from '../components/Footer/Footer';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 //Display product details
-function OrderConfirm({id,title,image,price = 42000,rating}){
+function OrderConfirm({id,title,image,price,rating}){
     const [cart , setCart] = useState([])
     const{amount} = useParams()
     const buyer = {
@@ -38,8 +38,7 @@ function OrderConfirm({id,title,image,price = 42000,rating}){
                 </div>
                     <img src={image} alt=""/>
 
-                    <button className='AddToCart'>Add to Cart</button>
-                    <button className='BuyNow'>Buy Now</button>
+                    <Link to='/samplePayment'><button className='BuyNow'>Buy Now</button></Link>
             </div> 
 
             {cart.length!=0&&cart.map((crt, index)=>(
@@ -52,7 +51,7 @@ function OrderConfirm({id,title,image,price = 42000,rating}){
                     </p>  
                     
                 </div>
-                    <img src={productImg} alt="" style={{height:'200px', width:'220px'}}/>
+                    {/* <img src={productImg} alt="" style={{height:'200px', width:'220px'}}/> */}
                     <br/> <br/>
                     <Link to='/samplePayment'><button className='Confirm' style={{width:'10rem', backgroundColor:'blue'}}>Confirm</button></Link>
                     

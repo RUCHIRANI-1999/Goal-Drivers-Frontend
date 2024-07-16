@@ -15,7 +15,7 @@ function NavHome() {
         </div>
         <ul>
           <Link to='/'><li><a href='#'>Home</a></li> </Link>  
-          <Link to='/about'> <li><a href='#'>About</a></li></Link>
+          <li><Link to="/aboutus">About us</Link></li>
           <li><a href='#'>services</a></li>
           <Link to='/product'> <li><a href='#'>Direct Sell</a></li></Link>
           <Link to='/form'> <li><a href='#'>Bid products</a></li></Link>

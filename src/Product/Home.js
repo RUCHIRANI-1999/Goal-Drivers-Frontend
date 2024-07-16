@@ -1,7 +1,7 @@
 import React, {Products, useEffect, useState} from 'react'
 import Product from './Product'
 import './Home.css'
-import heading from './Pictures/heading.jpg';
+import heading from '../Pictures/heading.jpg';
 import NavHome from '../components/NavBar/NavHome';
 import Footer from '../components/Footer/Footer';
 import { Link } from 'react-router-dom';
@@ -32,7 +32,7 @@ function Home() {
                     <Product
                     id={product.product_id}
                     title={product.name}
-                    price={product.amount}
+                    price={product.price}
                     rating={product.rate}
                     image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlMgiB5nidJ058pK8fBf7ySD6XhvQ5-S7nVQ&usqp=CAU"
                 />

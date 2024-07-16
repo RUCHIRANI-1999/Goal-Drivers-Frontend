@@ -1,5 +1,7 @@
 import React from 'react';
 import './Product.css';
+//import NavHome from '../../components/NavBar/NavHome';
+//import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
@@ -13,7 +15,7 @@ function Product({ id, title, image, price, rating }) {
             <div className="product_information">
                 <p>{title}</p>
                 <p className="product_price">
-                    <small>LKR</small>
+                    <small>LKR </small>
                     <strong>{price}</strong>
                 </p>
                 <div className='product_rating'>
